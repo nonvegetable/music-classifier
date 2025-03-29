@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Music Genre Classifier</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #1e1e1e;
+      color: #ffffff;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .container {
+      background-color: #2a2a2a;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+
+    input[type="file"] {
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #25d366;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #25d366;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🎶 Music Genre Classifier</h1>
+    <p>Upload a <strong>.wav</strong> file and get the predicted genre!</p>
+    
+    <input type="file" id="audioFile" accept=".wav"/>
+    <br/>
+    <button onclick="submitFile()">Predict Genre</button>
+    
+    <div id="result"></div>
+  </div>
+
+  <script>
+    async function submitFile() {
+      const fileInput = document.getElementById("audioFile");
+      const file = fileInput.files[0];
+
+      if (!file) {
+        alert("Please select a WAV file first!");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("audio", file);
+
+      document.getElementById("result").textContent = "🔄 Predicting...";
+
+      const response = await fetch("/predict-genre", {
+        method: "POST",
+        body: formData
+      });
+
+      const result = await response.json();
+      document.getElementById("result").textContent = `🎵 Predicted Genre: ${result.genre}`;
+    }
+  </script>
+</body>
+</html>

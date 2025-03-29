@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.swp
+*.bak
+*.tmp
+.env
+venv/
+env/
+*.log
+
+# Flask
+instance/
+uploads/
+*.db
+
+# Model and Data
+music_genre_cnn_colab.h5
+*.keras
+*.h5
+*.npy
+*.pkl
+*.joblib
+
+# Jupyter Notebooks Checkpoints
+.ipynb_checkpoints/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# VSCode / PyCharm
+.vscode/
+.idea/
+
+# HTML Frontend test files (if downloaded/uploaded separately)
+*.wav
+data/
