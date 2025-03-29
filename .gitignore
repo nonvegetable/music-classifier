@@ -17,9 +17,8 @@ uploads/
 *.db
 
 # Model and Data
-music_genre_cnn_colab.h5
 *.keras
-*.h5
+
 *.npy
 *.pkl
 *.joblib
