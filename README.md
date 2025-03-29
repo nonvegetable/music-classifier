@@ -1,6 +1,8 @@
 ## 🎶 Music Genre Classifier
 
-This is a simple machine learning project that classifies music into genres based on `.wav` audio input. It uses a CNN trained on MFCC features extracted from audio clips and serves predictions through a Flask backend with an HTML frontend.
+A simple machine learning web app that classifies `.wav` audio files into genres: **rock**, **jazz**, **pop**, or **classical**. It uses a CNN trained on MFCC features, with predictions served via Flask and a clean HTML frontend.
+
+> 🧠 Model by: [@soso2910](https://github.com/soso2910)
 
 ---
 
@@ -10,30 +12,22 @@ This is a simple machine learning project that classifies music into genres base
 music-classifier/
 ├── app.py                     # Flask backend
 ├── templates/
-│   └── index.html             # Frontend (served by Flask)
+│   └── index.html             # Frontend UI (served by Flask)
 ├── uploads/                  # Temporary folder for uploaded audio
-├── music_genre_cnn_colab.h5  # Trained model (not included in repo)
-├── data/                     # Local training audio clips (not included)
-├── requirements.txt          # Dependencies
-└── README.md                 # You are here
+├── music_genre_cnn_colab.h5  # ✅ Trained model (included in repo)
+├── requirements.txt          # Python dependencies
+├── render.yaml               # Render deploy config
+└── README.md                 # You're here
 ```
 
 ---
 
 ### 🚀 Features
 
-- Upload a `.wav` audio file
-- Predicts one of 4 genres: **rock**, **jazz**, **pop**, **classical**
-- Trained using **MFCC features** + **CNN model**
-- Web interface via HTML & Flask
-
----
-
-### 🧠 How It Works
-
-1. Audio features are extracted using **Librosa**.
-2. A **CNN** classifies the genre based on MFCCs.
-3. The Flask backend handles prediction and the frontend file upload.
+- Upload any `.wav` file via the web interface
+- Predict genre in real-time using a trained CNN
+- Fully local + easily deployable
+- Clean beginner-friendly project structure
 
 ---
 
@@ -59,24 +53,19 @@ venv\Scripts\activate  # On Windows
 pip install -r requirements.txt
 ```
 
-#### 4. Make Sure the Model is Present
-
-The file `music_genre_cnn_colab.h5` must exist.  
-If not, [train it using this notebook](#training-your-model).
-
-#### 5. Run the Server
+#### 4. Run the App
 
 ```bash
 python app.py
 ```
 
-Then visit `http://127.0.0.1:5000/` in your browser.
+Visit `http://127.0.0.1:5000/` in your browser.
 
 ---
 
-### 💾 Training Your Model
+### 💾 Training Your Own Model (Optional)
 
-You can train the model using your own `.wav` files by following the instructions in the included Jupyter notebook. Expected structure:
+You can train the model yourself using the included notebook. Place audio clips like this:
 
 ```
 data/processed/
@@ -86,53 +75,50 @@ data/processed/
 └── classical/classical_clip.wav
 ```
 
-After training, the model will be saved as:
+After training, the notebook will save:
 
 ```bash
 music_genre_cnn_colab.h5
 ```
 
----
-
-### 📦 Dependencies
-
-All Python dependencies are listed in `requirements.txt`, including:
-
-- Flask
-- TensorFlow / Keras
-- Librosa
-- NumPy
-- Scikit-learn
-- Werkzeug
+Include this in your repo to keep deployment simple.
 
 ---
 
-### 🛡️ .gitignore Suggestions
+### ☁️ Deploying on Render (Free Hosting)
 
-Make sure to exclude:
-- `uploads/` folder
-- `music_genre_cnn_colab.h5`
-- `data/`
-- Virtual environments (`venv/`)
-
----
-
-### 🌟 Future Improvements
-
-- Add support for more genres
-- Use larger dataset
-- Add drag-and-drop file upload
-- Show waveform or spectrogram
-- Deploy online (Render, Replit, etc.)
+1. Create a Render account at [render.com](https://render.com)
+2. Push this repo to GitHub
+3. Click **"New Web Service"** on Render
+4. Fill in:
+   - **Runtime**: Python
+   - **Start command**: `python app.py`
+   - **Environment**: `python`
+5. Done! Your app will be live like:
+   ```
+   https://your-app-name.onrender.com
+   ```
 
 ---
 
-### 🤝 Credits
+### 🛡️ .gitignore Tips
 
-Created as a fun ML + Web integration project.  
-Trained using `.wav` files and powered by TensorFlow and Flask.
+Make sure to ignore:
+
+```gitignore
+uploads/
+data/
+__pycache__/
+venv/
+```
+
+✅ But **DO NOT** ignore `music_genre_cnn_colab.h5` now.
 
 ---
-### 🙌 Shoutout
 
-Huge thanks to @soso2910 for creating the original training model used in this project! 🎉
+### 🙌 Credits
+
+- Model by **[@soso2910](https://github.com/soso2910)**
+- ML by **TensorFlow + Librosa**
+- Backend: **Flask**
+- Frontend: **HTML + JS**
