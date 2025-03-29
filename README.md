@@ -80,40 +80,6 @@ After training, the notebook will save:
 ```bash
 music_genre_cnn_colab.h5
 ```
-
-Include this in your repo to keep deployment simple.
-
----
-
-### ☁️ Deploying on Render (Free Hosting)
-
-1. Create a Render account at [render.com](https://render.com)
-2. Push this repo to GitHub
-3. Click **"New Web Service"** on Render
-4. Fill in:
-   - **Runtime**: Python
-   - **Start command**: `python app.py`
-   - **Environment**: `python`
-5. Done! Your app will be live like:
-   ```
-   https://your-app-name.onrender.com
-   ```
-
----
-
-### 🛡️ .gitignore Tips
-
-Make sure to ignore:
-
-```gitignore
-uploads/
-data/
-__pycache__/
-venv/
-```
-
-✅ But **DO NOT** ignore `music_genre_cnn_colab.h5` now.
-
 ---
 
 ### 🙌 Credits
